@@ -1,0 +1,16 @@
+.restart-container {
+    display: flex;
+    height: 40px;
+    margin: 0px 0px 0px 0px;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.restart-button {
+    height: 30px;
+    width: 150px;
+    font-size: 16px;
+    color: white;
+    background-color: #f27575;
+}

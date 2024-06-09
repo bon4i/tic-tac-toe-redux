@@ -1,0 +1,23 @@
+.game-filed {
+    height: 210px;
+    width: 270px;
+    margin: 10px 40px 20px 40px;
+    background-color: #fff;
+    border: 1px solid #727171;
+}
+
+.cell-button {
+    height: 70px;
+    width: 90px;
+    vertical-align: top;
+    text-align: center;
+    border: 1px solid #807d7d;
+}
+
+.red {
+    color: rgb(249, 95, 95);
+}
+
+.blue {
+    color: rgb(57, 57, 242);
+}

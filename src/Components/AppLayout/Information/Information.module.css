@@ -1,0 +1,18 @@
+.information-container {
+    display: flex;
+    height: 30px;
+    margin: 30px 40px 5px 40px;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+.red {
+    color: rgb(249, 95, 95);
+}
+
+.blue {
+    color: rgb(57, 57, 242);
+}
