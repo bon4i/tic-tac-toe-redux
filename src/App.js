@@ -1,57 +1,28 @@
-import React, { useState } from 'react';
-import styles from './App.module.css';
+import React, { useEffect, useState } from 'react';
 import { AppLayout } from './Components/AppLayout/AppLayout';
-import { WIN_PATTERNS } from './data/data.js';
+import { store } from './store.js';
+import styles from './App.module.css';
 
 export const App = () => {
-    const fieldArray = ['', '', '', '', '', '', '', '', ''];
-    const [currentPlayer, setCurrentPlayer] = useState('X');
-    const [isGameEnded, setIsGameEnded] = useState(false);
-    const [isDraw, setIsDraw] = useState(false);
-    const [field, setField] = useState(fieldArray);
+    const [, setState] = useState(store.getState());
 
-    const handleClickCellButtons = (id) => {
-        const updateField = field.slice();
-        if (field[id] === '' && !isGameEnded) {
-            updateField[id] = currentPlayer;
-            setField(updateField);
-        } else return false;
+    useEffect(() => {
+        const unsubscribe = store.subscribe(() => {
+            setState(store.getState());
+        });
 
-        if (checkForWinner(updateField, currentPlayer)) {
-            setIsGameEnded(true);
-            return false;
-        } else if (
-            !checkForWinner(updateField, currentPlayer) &&
-            !updateField.some((element) => element === '')
-        ) {
-            setIsDraw(true);
-        }
-        setCurrentPlayer(currentPlayer === 'X' ? '0' : 'X');
-    };
+        return () => {
+            unsubscribe();
+        };
+    }, []);
 
     const handleResetGame = () => {
-        setCurrentPlayer('X');
-        setIsGameEnded(false);
-        setIsDraw(false);
-        setField(fieldArray);
-    };
-
-    const checkForWinner = (cells, player) => {
-        return WIN_PATTERNS.some((element) =>
-            element.every((item) => cells[item] === player),
-        );
+        store.dispatch({ type: 'resetGame' });
     };
 
     return (
         <div className={styles['app-container']}>
-            <AppLayout
-                field={field}
-                isDraw={isDraw}
-                isGameEnded={isGameEnded}
-                currentPlayer={currentPlayer}
-                handleClickCellButtons={handleClickCellButtons}
-                handleResetGame={handleResetGame}
-            />
+            <AppLayout handleResetGame={handleResetGame} />
         </div>
     );
 };
