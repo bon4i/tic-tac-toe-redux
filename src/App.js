@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AppLayout } from './Components/AppLayout/AppLayout';
-import { store } from './store.js';
 import styles from './App.module.css';
 
 export const App = () => {
-    const [, setState] = useState(store.getState());
-
-    useEffect(() => {
-        const unsubscribe = store.subscribe(() => {
-            setState(store.getState());
-        });
-
-        return () => {
-            unsubscribe();
-        };
-    }, []);
-
+    const dispatch = useDispatch();
     const handleResetGame = () => {
-        store.dispatch({ type: 'resetGame' });
+        dispatch({ type: 'resetGame' });
     };
 
     return (

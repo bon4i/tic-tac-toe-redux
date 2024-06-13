@@ -1,7 +1,9 @@
+import { useSelector } from 'react-redux';
+import { selectField } from '../../../selectors';
 import styles from './Field.module.css';
-import { store } from '../../../store';
+
 export const FieldLayout = ({ handleClickCellButtons }) => {
-	const { field } = store.getState();
+	const field = useSelector(selectField);
 
 	return(
 		<div className={styles['game-filed']}>

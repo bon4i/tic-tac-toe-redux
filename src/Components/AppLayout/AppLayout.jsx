@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import styles from './AppLayout.module.css';
 import { FieldContainer } from "./Field/FieldContainer";
 import { InformationContainer } from "./Information/InformationContainer";
+import styles from './AppLayout.module.css';
 
 export const AppLayout = (props) => {
 	return(

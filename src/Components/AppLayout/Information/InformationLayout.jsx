@@ -1,7 +1,15 @@
 import styles from './Information.module.css';
-import { store } from '../../../store';
+import { useSelector } from 'react-redux';
+import {
+	selectIsDraw,
+	selectIsGameEnded,
+	selectCurrentPlayer,
+} from '../../../selectors';
+
 export const InformationLayout = () => {
-	const { isDraw, isGameEnded, currentPlayer} = store.getState();
+	const currentPlayer = useSelector(selectCurrentPlayer);
+	const isDraw = useSelector(selectIsDraw);
+	const isGameEnded = useSelector(selectIsGameEnded);
 
 	return(
 		<div className={styles['information-container']}>

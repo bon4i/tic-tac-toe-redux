@@ -1,4 +1,4 @@
-import { WIN_PATTERNS } from '../data/data';
+import { WIN_PATTERNS } from '../data/data.js';
 
 export const checkForWinner = (cells, player) => {
     return WIN_PATTERNS.some((element) =>
