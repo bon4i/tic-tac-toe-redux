@@ -27,13 +27,11 @@ export const FieldContainer = () => {
 
 			if (checkForWinner(updatedField, currentPlayer)) {
 				dispatch({ type: 'isGameEnded', payload: true });
-				console.log('isGameEnded')
 			} else if (
 				!checkForWinner(updatedField, currentPlayer) &&
 				!updatedField.some((element) => element === '')
 			) {
 				dispatch({ type: 'isDraw', payload: true });
-				console.log('isDraw')
 			} else if (
 				!checkForWinner(updatedField, currentPlayer) &&
 				updatedField.some((element) => element === '')
@@ -42,7 +40,6 @@ export const FieldContainer = () => {
 					type: 'currentPlayer',
 					payload: currentPlayer === 'X' ? '0' : 'X',
 				});
-				console.log('currentPlayer')
 			}
 
 			dispatch({
